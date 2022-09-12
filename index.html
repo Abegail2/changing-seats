@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!--画像のフリップには3.50.0以上が必要-->
+<!--参考: https://codepen.io/rexrainbow/pen/pobEQLN-->
+<!--<script src="//cdn.jsdelivr.net/npm/phaser@3.17.0/dist/phaser.js"></script>-->
+<script src="//cdn.jsdelivr.net/npm/phaser@3.50.0/dist/phaser.js"></script>
+<script src="./js/load.js"></script>
+<script src="./js/start.js"></script>
+<script src="./js/selectname.js"></script>
+<script src="./js/lottery.js"></script>
+<script src="./js/classroom.js"></script>
+<script src="./js/testScene.js"></script>
+
+<style>
+body {
+  margin: 0;
+}
+</style>
+<script>
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false
+        }
+    },
+    scene: [loadScene, startScene, selectnameScene, lotteryScene, classroomScene, testScene],
+};
+var game = new Phaser.Game(config);
+</script>
+</head>
+<body>
+</body>
+</html>
