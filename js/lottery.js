@@ -43,15 +43,20 @@ lotteryScene.config = function (data) {
         }
         this.numbers = numbers;
     } else {
-        // console.log('先程選んだ番号',data.selectNumber);
-        // console.log('選んだ番号の配列のindex値',this.numbers.indexOf(data.selectNumber));
-        /* [3,1,4,2]
+         /* [3,1,4,2]
         ↑4を選んだから消したい
         splice関数では配列の何番目かとして、処理をするので、これだと配列の4番目を消してしまう*/
 
         // indexOfを使うことで、その値が配列の何番目かを取得して、その値をsplice関数に渡す。
-        this.numbers.splice(this.numbers.indexOf(data.selectNumber), 1);
-        console.log(this.numbers)
+        var updateNumbers = this.numbers.map((number) => {
+            if(number.number === data.selectNumber) {
+                return {id:number.id,　number:null};
+            }
+            return number;
+        });
+        this.numbers = updateNumbers;
+        // this.numbers.splice(this.numbers.indexOf(data.selectNumber), 1);
+        console.log(this.numbers);
     }
 };
 
@@ -80,31 +85,35 @@ var setCard = function (scene, x, y, frontFace, backFace) {
 };
 
 lotteryScene.createCard = function(data, numbers){
+    // console.log(data)
+    // console.log(numbers)
     //数を並べ、表示
     for(var j in numbers){
+        if(numbers[j].number === null) {
+            continue;
+        }
         var a      = (Number(numbers[j].id) + 1);
         var row    = parseInt(numbers[j].id　/ 6);
-        var x      = 30 + row * 130;
+        var x      = 75 + row * 130;
         var y      = 0;
-        // var selectnumber = numbers[j].number;
 
         if(a % 6 == 1){
-            y = 55;
+            y = 85;
         }
         if(a % 6 == 2){
-            y = 145;
+            y = 175;
         }
         if(a % 6 == 3){
-            y = 240;
+            y = 270;
         }
         if(a % 6 == 4){
-            y = 335;
+            y = 365;
         }
         if(a % 6 == 5){
-            y = 430;
+            y = 460;
         }
         if(a % 6 == 0){
-            y = 520;
+            y = 550;
         }
 
         var create = function(selectNumber, studentNumber){
@@ -113,26 +122,11 @@ lotteryScene.createCard = function(data, numbers){
             // カードのフリップが完了（complete）した時点で実行する
             card.flip.on('complete', function(){
                 lotteryScene.scene.start('classroomScene', {
-                    status :        selectNumber,
+                    selectNumber  : selectNumber,
                     studentNumber : studentNumber,
+                    firstSelect   :data.firstSelect
                 });
             });
-        //     //カードをタップしたら
-        //     cards.on('pointerdown', function(){
-        //         //次のシーンへ
-        //         console.log(data.NUMBER);
-
-        //         lotteryScene.scene.start('classroomScene', {
-        //             status :        selectNumber,
-        //             studentNumber : studentNumber,
-        //         });
-
-        //         // var f = function(selectNumber,studentNumber){
-        //         //     return create(selectNumber, studentNumber);
-        //         // };
-
-        //         // f(numbers[j].number, data.NUMBER);
-        //     },this);
         };
         create(numbers[j].number, data.NUMBER);
     }

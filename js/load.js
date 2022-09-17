@@ -4,6 +4,11 @@ var loadScene = new Phaser.Scene("loadScene");
 loadScene.preload = function() {
     // スタート画像
     this.load.image('gamestart', 'assets/images/gamestart.gif');
+    this.load.image('manualbackgound', 'assets/images/manualbackgound.png');
+    this.load.image('back', 'assets/images/back.png');
+    this.load.image('start', 'assets/images/start.png');
+    this.load.image('manual', 'assets/images/manual.png');
+
     // ゲームオーバー画像
     this.load.image('gameover', 'assets/images/gameover.png');
 
