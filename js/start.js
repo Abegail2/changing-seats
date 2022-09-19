@@ -60,24 +60,23 @@ startScene.createTutorial = function(){
             fill : '#778899',
         });
 
-        // //2秒後に戻るのボタンを表示
-        // this.timeEvent = this.time.addEvent({
-        //     delay         : 2000,
-        //     callback      : this.createBackbutton,
-        //     callbackScope : this,
-        // });
+        this.timeEvent = this.time.addEvent({
+            delay : 2000,
+            callback : a,
+            callbackScope : this,
+        });
 
-
-            //戻るのボタン
-            var backImage = this.add.image(400, 460, 'back').setInteractive();
-            backImage.setDisplaySize(90, 60);
-
-            //戻るのボタンを押したら元の画面に戻る
-            backImage.on('pointerdown', function(){
+        var a = function(){
+            //戻るボタンの作成
+            this.backImage = this.add.image(400, 460, 'back').setInteractive();
+            this.backImage.setDisplaySize(90, 60);
+        };
+            //戻るボタンを押したら元の画面に戻る
+            this.backImage.on('pointerdown', function(){
             　　this.scene.start("startScene");
             },this);
 
-        //};
+
 
 
 

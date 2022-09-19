@@ -10,9 +10,6 @@ classroomScene.create = function(data){
     //机を作る
     this.createDesks();
 
-    //机に出席番号を表示
-    this.createEnterNumbers(this.desks);
-
     //教卓
     this.text1 = this.add.text(380, 8, '教卓',{
         font : '27px Sawarabi Gothic',
@@ -21,6 +18,9 @@ classroomScene.create = function(data){
 
     //次のシーンへ
     this.nextScene(data.studentNumber, data.selectNumber);
+
+    //机に出席番号を表示
+    this.createEnterNumbers(this.desks);
 };
 
 classroomScene.config = function(data){
@@ -54,28 +54,44 @@ classroomScene.createDesks = function(){
         var y      = 0;
 
         if(a % 6 == 1){
-            y = 80;
+            y = 85;
         }
         if(a % 6 == 2){
-            y = 170;
+            y = 175;
         }
         if(a % 6 == 3){
-            y = 265;
+            y = 270;
         }
         if(a % 6 == 4){
-            y = 360;
+            y = 365;
         }
         if(a % 6 == 5){
-            y = 455;
+            y = 460;
         }
         if(a % 6 == 0){
-            y = 545;
+            y = 550;
         }
 
         //机の表示
         this.deskImage = this.add.image(x, y, 'desk2');
         this.deskImage.setDisplaySize(108, 72);
     }
+};
+
+
+
+classroomScene.nextScene = function(studentNumber, selectNumber){
+    //次の人への表示
+    this.nextImage = this.add.image(660, 24, 'next').setInteractive();
+    this.nextImage.setDisplaySize(121.5, 40.5);
+
+    //selectnameSceneに戻る
+    this.nextImage.on('pointerdown', function() {
+        this.scene.start('selectnameScene',{
+            studentNumber : studentNumber,
+            selectNumber  : selectNumber,
+        });
+    },this);
 };
 
 classroomScene.createEnterNumbers = function(desks){
@@ -115,30 +131,28 @@ classroomScene.createEnterNumbers = function(desks){
         });
     }
 
-    //36人席替えが終わったらfinalSceneに移る
+    //36人席替えが終わったら
     for (var j in desks) {
             if (desks[j].studentNumber == '') {
                 return;
             }
     }
-    this.nextScene = false;
+    //教卓と次の人へのボタンを消す
+    this.text1.destroy();
+    this.nextImage.destroy();
 
+    //席替えができたことを伝える
+    this.text3 = this.add.text(260, 8, '席替えができました！！',{
+       font : '27px Sawarabi Gothic',
+       fill : '#778899',
+    });
 
-};
-
-classroomScene.nextScene = function(studentNumber, selectNumber){
-    //説明の表示
-    this.text2 = this.add.text(600, 8, '次の人へ',{
-        font : '27px Sawarabi Gothic',
-        fill : '#778899',
-    }).setInteractive();
-
-    //selectnameSceneに戻る
-    this.text2.on('pointerdown', function() {
-        this.scene.start('selectnameScene',{
-            studentNumber : studentNumber,
-            selectNumber  : selectNumber,
-        });
+    //終了のボタンの表示
+    this.finalImage = this.add.image(670, 24, 'final').setInteractive();
+    this.finalImage.setDisplaySize(121.5, 40.5);
+    //終了のボタンを押したら
+    this.finalImage.on('pointerdown', function(){
+        this.scene.start("startScene");
     },this);
-};
 
+};

@@ -56,6 +56,8 @@ loadScene.preload = function() {
     //机の画像(classoroomScene)
     this.load.image('desk', 'assets/images/desk.png');
     this.load.image('desk2', 'assets/images/desk2.png');
+    this.load.image('next', 'assets/images/next.png');
+    this.load.image('final', 'assets/images/final.png');
 
 };
 

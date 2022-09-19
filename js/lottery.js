@@ -123,7 +123,7 @@ lotteryScene.createCard = function(data, numbers){
                 lotteryScene.scene.start('classroomScene', {
                     selectNumber  : selectNumber,
                     studentNumber : studentNumber,
-                    firstSelect   :data.firstSelect
+                    firstSelect   : data.firstSelect
                 });
             });
         };
