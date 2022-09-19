@@ -56,7 +56,6 @@ lotteryScene.config = function (data) {
         });
         this.numbers = updateNumbers;
         // this.numbers.splice(this.numbers.indexOf(data.selectNumber), 1);
-        console.log(this.numbers);
     }
 };
 

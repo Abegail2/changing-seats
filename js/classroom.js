@@ -116,15 +116,14 @@ classroomScene.createEnterNumbers = function(desks){
     }
 
     //36人席替えが終わったらfinalSceneに移る
-    for (var i in desks) {
-        if (desks[i].studentNumber == '') {
-            return;
-        }
+    for (var j in desks) {
+            if (desks[j].studentNumber == '') {
+                return;
+            }
     }
-    this.scene.start('finalScene', {
-        studentNumber : studentNumber,
-        selectNumber  : selectNumber,
-    });
+    this.nextScene = false;
+
+
 };
 
 classroomScene.nextScene = function(studentNumber, selectNumber){
@@ -133,6 +132,7 @@ classroomScene.nextScene = function(studentNumber, selectNumber){
         font : '27px Sawarabi Gothic',
         fill : '#778899',
     }).setInteractive();
+
     //selectnameSceneに戻る
     this.text2.on('pointerdown', function() {
         this.scene.start('selectnameScene',{

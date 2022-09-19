@@ -35,24 +35,28 @@ startScene.createTutorial = function(){
         startImage.destroy();
 
         //背景は白
-        this.background = this.add.image(405, 335, 'manualbackgound');
-        this.background.setDisplaySize(720, 315);
+        this.background = this.add.image(405, 335, 'background');
+        this.background.setDisplaySize(730, 340);
 
         //どのように操作するのか
-        var step1Text = this.add.text(100, 200, 'step1. STARTを押す',{
-            font : '35px Zen Kurenaido',
+        var step1Text = this.add.text(80, 180, 'step1. STARTを押す',{
+            font : '33px Zen Kurenaido',
             fill : '#778899',
         });
-        var step2Text = this.add.text(100, 250, 'step2. 自分の出席番号を選ぶ',{
-            font : '35px Zen Kurenaido',
+        var step2Text = this.add.text(80, 230, 'step2. 自分の出席番号を選ぶ',{
+            font : '33px Zen Kurenaido',
             fill : '#778899',
         });
-        var step3Text = this.add.text(100, 300, 'step3. 直感でカードを選ぶ',{
-            font : '35px Zen Kurenaido',
+        var step3Text = this.add.text(80, 280, 'step3. 直感でカードを選ぶ',{
+            font : '33px Zen Kurenaido',
             fill : '#778899',
         });
-        var step4Text = this.add.text(100, 350, 'step4. 自分の位置を確認する',{
-            font : '35px Zen Kurenaido',
+        var step4Text = this.add.text(80, 330, 'step4. 自分の位置を確認する',{
+            font : '33px Zen Kurenaido',
+            fill : '#778899',
+        });
+        var step5Text = this.add.text(80, 380, 'step5. 確認できたら、"次の人へ"をクリック',{
+            font : '33px Zen Kurenaido',
             fill : '#778899',
         });
 
@@ -63,37 +67,21 @@ startScene.createTutorial = function(){
         //     callbackScope : this,
         // });
 
-        //startScene.createBackbutton = function(){
-            //戻るのボタン
-            var backImage = this.add.image(400, 440, 'back').setInteractive();
-            backImage.setDisplaySize(90, 60);
 
-        // //画像の変化量
-        // this.dx = 2;
-        // this.width = 200;
-　　　　//画像の大きさを変える
-        // var changeScale = function(){
-        //     //もし100より小さくなったら
-        //     if(this.width < 100){
-        //         this.d = -this.d;
-        //     }
-        //     //もし300より大きくなったら
-        //     if(this.width > 300){
-        //       this.d = -this.d;
-        //   }
-        //     this.width += this.d;
-        //     this.backImage.displaywidth = this.width;
+            //戻るのボタン
+            var backImage = this.add.image(400, 460, 'back').setInteractive();
+            backImage.setDisplaySize(90, 60);
 
             //戻るのボタンを押したら元の画面に戻る
             backImage.on('pointerdown', function(){
             　　this.scene.start("startScene");
             },this);
 
-        // };
-
-
-
         //};
+
+
+
+
 
 
     },this);
