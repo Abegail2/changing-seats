@@ -55,7 +55,6 @@ lotteryScene.config = function (data) {
             return number;
         });
         this.numbers = updateNumbers;
-        // this.numbers.splice(this.numbers.indexOf(data.selectNumber), 1);
     }
 };
 
@@ -84,8 +83,6 @@ var setCard = function (scene, x, y, frontFace, backFace) {
 };
 
 lotteryScene.createCard = function(data, numbers){
-    // console.log(data)
-    // console.log(numbers)
     //数を並べ、表示
     for(var j in numbers){
         if(numbers[j].number === null) {
