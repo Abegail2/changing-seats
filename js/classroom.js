@@ -78,8 +78,6 @@ classroomScene.createDesks = function(){
     }
 };
 
-
-
 classroomScene.nextScene = function(studentNumber, selectNumber){
     //次の人への表示
     this.nextImage = this.add.image(660, 24, 'next').setInteractive();

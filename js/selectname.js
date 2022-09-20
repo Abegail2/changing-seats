@@ -84,7 +84,6 @@ selectnameScene.NamePlates = function(a){
              selectNumber: this.selectNumber,
         });
     },this);
-
 };
 
 

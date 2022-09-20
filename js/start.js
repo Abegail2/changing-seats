@@ -72,7 +72,7 @@ startScene.createTutorial = function(){
 
         //1秒後に戻るボタンを表示
         this.timeEvent = this.time.addEvent({
-            delay    : 1000,
+            delay    : 2000,
             callback : createbackImage,
             callbackScope : this,
         });
