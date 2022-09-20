@@ -106,22 +106,22 @@ classroomScene.createEnterNumbers = function(desks){
         var y = 0;
 
         if(selectNumber % 6 == 1){
-            y = 65;
+            y = 75;
         }
         if(selectNumber % 6 == 2){
-            y = 155;
+            y = 165;
         }
         if(selectNumber % 6 == 3){
-            y = 250;
+            y = 260;
         }
         if(selectNumber % 6 == 4){
-            y = 345;
+            y = 355;
         }
         if(selectNumber % 6 == 5){
-            y = 440;
+            y = 450;
         }
         if(selectNumber % 6 == 0){
-            y = 530;
+            y = 540;
         }
 
         //机に出席番号を表示
@@ -148,11 +148,11 @@ classroomScene.createEnterNumbers = function(desks){
     });
 
     //終了のボタンの表示
-    this.finalImage = this.add.image(670, 24, 'final').setInteractive();
+    this.finalImage = this.add.image(100, 24, 'final').setInteractive();
     this.finalImage.setDisplaySize(121.5, 40.5);
-    //終了のボタンを押したら
+    //終了のボタンを押したら再読み込みをする
     this.finalImage.on('pointerdown', function(){
-        this.scene.start("startScene");
+        location.reload();
     },this);
 
 };
